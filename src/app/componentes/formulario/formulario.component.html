@@ -1,0 +1,49 @@
+<div class="contenedor-formulario">
+    <form >
+      <mat-form-field>
+        <input
+          matInput
+          [(ngModel)]="nombre"
+          name="city"
+          type="text"
+          placeholder="Ingrese nombre"
+        />
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input
+          matInput
+          [(ngModel)]="apellido"
+          name="apellido"
+          type="text"
+          placeholder="Ingrese apellido"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          [(ngModel)]="celular"
+          name="celular"
+          type="text"
+          placeholder="Ingrese celular"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          [(ngModel)]="correo"
+          name="correo"
+          type="text"
+          placeholder="Ingrese correo"
+        />
+      </mat-form-field>
+  
+      <div class="example-button-row">
+          <button mat-raised-button color="primary" type="submit" (click)="addEmpleado($event)">Agregar</button>
+      </div>
+      
+    </form>
+  </div>
+  

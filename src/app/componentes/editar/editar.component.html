@@ -1,0 +1,22 @@
+<div class="container">
+    <mat-form-field>
+        <input matInput placeholder="nombre" name="nombre" [(ngModel)]="this.empleadoService.selected.nombre">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="apellido" name="apellido" [(ngModel)]="this.empleadoService.selected.apellido">
+    </mat-form-field>
+    
+    <mat-form-field>
+        <input matInput placeholder="celular" name="celular" [(ngModel)]="this.empleadoService.selected.celular">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="correo" name="correo" [(ngModel)]="this.empleadoService.selected.correo">
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" (click)="guardAct()">
+        <mat-icon>save</mat-icon>Save
+    </button>
+
+</div>
