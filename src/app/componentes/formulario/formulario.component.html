@@ -1,49 +1,171 @@
-<div class="contenedor-formulario">
-    <form >
-      <mat-form-field>
-        <input
-          matInput
-          [(ngModel)]="nombre"
-          name="city"
-          type="text"
-          placeholder="Ingrese nombre"
-        />
-      </mat-form-field>
-  
-      <mat-form-field>
-        <input
-          matInput
-          [(ngModel)]="apellido"
-          name="apellido"
-          type="text"
-          placeholder="Ingrese apellido"
-        />
-      </mat-form-field>
+ <div class="content p-24">
 
-      <mat-form-field>
-        <input
-          matInput
-          [(ngModel)]="celular"
-          name="celular"
-          type="text"
-          placeholder="Ingrese celular"
-        />
-      </mat-form-field>
+   <div class="mat-elevation-z8 p-24 mat-card">
 
-      <mat-form-field>
-        <input
-          matInput
-          [(ngModel)]="correo"
-          name="correo"
-          type="text"
-          placeholder="Ingrese correo"
-        />
-      </mat-form-field>
-  
-      <div class="example-button-row">
-          <button mat-raised-button color="primary" type="submit" (click)="addEmpleado($event)">Agregar</button>
-      </div>
-      
-    </form>
-  </div>
-  
+     <div class="formulario">
+       <form [formGroup]="form">
+
+         <div class="dos-bloque">
+           <mat-form-field appearance="outline">
+             <mat-label>Nombre</mat-label>
+             <input matInput formControlName="nombre" required>
+             <mat-error *ngFor="let error of objToArray(nombre.errors)">
+               <div [ngSwitch]="error">
+                 <ng-template [ngSwitchCase]="'required'">
+                   Requerido
+                 </ng-template>
+                 <ng-template ngSwitchDefault>
+                   {{error}}
+                 </ng-template>
+               </div>
+             </mat-error>
+             <mat-icon matSuffix matTooltip="Nombre del equipo."> info</mat-icon>
+           </mat-form-field>
+
+           <mat-form-field appearance="outline">
+             <mat-label>Estadio</mat-label>
+             <input matInput formControlName="estadio" required>
+             <mat-error *ngFor="let error of objToArray(estadio.errors)">
+               <div [ngSwitch]="error">
+                 <ng-template [ngSwitchCase]="'required'">
+                   Requerido
+                 </ng-template>
+                 <ng-template ngSwitchDefault>
+                   {{error}}
+                 </ng-template>
+               </div>
+             </mat-error>
+             <mat-icon matSuffix matTooltip="Estadio del equipo."> info</mat-icon>
+           </mat-form-field>
+         </div>
+
+         <div class="dos-bloque">
+           <mat-form-field appearance="outline">
+             <mat-label>Sitio web</mat-label>
+             <input matInput formControlName="sitioWeb" required>
+             <mat-error *ngFor="let error of objToArray(sitioWeb.errors)">
+               <div [ngSwitch]="error">
+                 <ng-template [ngSwitchCase]="'required'">
+                   Requerido
+                 </ng-template>
+                 <ng-template ngSwitchDefault>
+                   {{error}}
+                 </ng-template>
+               </div>
+             </mat-error>
+             <mat-icon matSuffix matTooltip="Sitio web del equipo."> info</mat-icon>
+           </mat-form-field>
+
+           <mat-form-field appearance="outline">
+             <mat-label>Nacionalidad</mat-label>
+             <input matInput formControlName="nacionalidad" required>
+             <mat-error *ngFor="let error of objToArray(nacionalidad.errors)">
+               <div [ngSwitch]="error">
+                 <ng-template [ngSwitchCase]="'required'">
+                   Requerido
+                 </ng-template>
+                 <ng-template ngSwitchDefault>
+                   {{error}}
+                 </ng-template>
+               </div>
+             </mat-error>
+             <mat-icon matSuffix matTooltip="Nacionalidad del equipo."> info</mat-icon>
+           </mat-form-field>
+         </div>
+
+         <div class="dos-bloque">
+
+           <mat-form-field appearance="outline">
+             <mat-label>Año de fundación</mat-label>
+             <input matInput [matDatepicker]="picker2" formControlName="fundacion" required>
+             <mat-error *ngFor="let error of objToArray(fundacion.errors)">
+               <div [ngSwitch]="error">
+                 <ng-template [ngSwitchCase]="'required'">
+                   Requerido
+                 </ng-template>
+                 <ng-template ngSwitchDefault>
+                   {{error}}
+                 </ng-template>
+               </div>
+             </mat-error>
+             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+             <mat-datepicker #picker2 color="primary"></mat-datepicker>
+           </mat-form-field>
+
+           <mat-form-field appearance="outline">
+             <mat-label>Entrenador</mat-label>
+             <input matInput formControlName="entrenador" required>
+             <mat-error *ngFor="let error of objToArray(entrenador.errors)">
+               <div [ngSwitch]="error">
+                 <ng-template [ngSwitchCase]="'required'">
+                   Requerido
+                 </ng-template>
+                 <ng-template ngSwitchDefault>
+                   {{error}}
+                 </ng-template>
+               </div>
+             </mat-error>
+             <mat-icon matSuffix matTooltip="Entrenador del equipo."> info</mat-icon>
+           </mat-form-field>
+         </div>
+
+         <div class="dos-bloque">
+           <mat-form-field appearance="outline">
+             <mat-label>Capacidad</mat-label>
+             <input matInput formControlName="capacidad" required>
+             <mat-error *ngFor="let error of objToArray(capacidad.errors)">
+               <div [ngSwitch]="error">
+                 <ng-template [ngSwitchCase]="'required'">
+                   Requerido
+                 </ng-template>
+                 <ng-template ngSwitchDefault>
+                   {{error}}
+                 </ng-template>
+               </div>
+             </mat-error>
+             <mat-icon matSuffix matTooltip="Capacidad del equipo."> info</mat-icon>
+           </mat-form-field>
+
+           <mat-form-field appearance="outline">
+             <mat-label>Valor</mat-label>
+             <input matInput formControlName="valor" mask="separator.2" separatorLimit="1000000000000"
+               thousandSeparator="." required>
+             <mat-error *ngFor="let error of objToArray(valor.errors)">
+               <div [ngSwitch]="error">
+                 <ng-template [ngSwitchCase]="'required'">
+                   Requerido
+                 </ng-template>
+                 <ng-template ngSwitchDefault>
+                   {{error}}
+                 </ng-template>
+               </div>
+             </mat-error>
+             <mat-icon matSuffix matTooltip="Valor del equipo."> info</mat-icon>
+           </mat-form-field>
+         </div>
+
+
+
+       </form>
+
+       <div class="button">
+
+         <a routerLink="/equipos/listar" mat-raised-button class="margen">
+           <mat-icon>cancel</mat-icon>
+           <span>Cancelar</span>
+         </a>
+         <!-- <button mat-raised-button type="button" (click)="close()" class="margen">
+           <mat-icon>cancel</mat-icon>
+           <span>Cancelar</span>
+         </button> -->
+         <button mat-raised-button [disabled]="form.invalid || submit" type="submit" (click)="guardarHandle($event)"
+           class="btnGuardar">
+           <mat-icon>save</mat-icon>
+           <span>Guardar</span>
+         </button>
+       </div>
+
+
+     </div>
+   </div>
+ </div>

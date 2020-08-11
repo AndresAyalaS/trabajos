@@ -1,18 +1,46 @@
 .example-container {
-    display: flex;
-    width: 50%;
-    flex-direction: column;
-    margin-left: 2%;
-  }
-  
-  .example-container > * {
-    width: 90%;
-    margin-left: 2%;
-  }
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  margin-left: 2%;
+}
 
-  .mat-form-field {
-    font-size: 16px;
-    width: 50%;
-    margin-left: 2%;
-  }
-  
+.formulario {
+  padding-top: 24px;
+}
+
+.example-container > * {
+  width: 90%;
+  margin-left: 2%;
+}
+
+.mat-form-field {
+  font-size: 16px;
+  width: 50%;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.button {
+  padding-bottom: 24px;
+  text-align: end;
+  padding-top: 24px;
+  padding-right: 24px;
+}
+
+.margen {
+  margin-right: 12px;
+}
+
+.btnGuardar {
+  background: rgb(19, 121, 49);
+  color: rgb(235, 245, 238);
+}
+
+.dos-bloque {
+  flex-direction: row;
+  display: flex;
+  place-content: center flex-start;
+  align-items: center;
+  flex: 1 0 auto;
+}

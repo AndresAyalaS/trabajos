@@ -1,0 +1,40 @@
+table {
+  width: 96%;
+  margin-left: 2%;
+}
+
+.mat-form-field {
+  font-size: 16px;
+  width: 96%;
+  margin-left: 2%;
+}
+
+.mat-column-nombre {
+  min-width: 90px;
+   max-width: 100px;
+}
+th.mat-column-apellido {
+  min-width: 90px;
+  max-width: 100px;
+}
+th.mat-column-celular {
+  min-width: 90px;
+   max-width: 100px;
+}
+th.mat-column-correo {
+  min-width: 90px;
+   max-width: 100px;
+}
+th.mat-column-accion {
+  min-width: 100px;
+  max-width: 100px;
+  padding-left: 14px;
+}
+
+.btnEliminar {
+  color: rgb(194, 24, 32);
+}
+
+.btnEdit {
+  color: rgb(19, 121, 49);
+}

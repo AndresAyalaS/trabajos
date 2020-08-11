@@ -1,22 +1,89 @@
-<div class="container">
-    <mat-form-field>
-        <input matInput placeholder="nombre" name="nombre" [(ngModel)]="this.empleadoService.selected.nombre">
-    </mat-form-field>
+ <div class="content p-24">
 
-    <mat-form-field>
-        <input matInput placeholder="apellido" name="apellido" [(ngModel)]="this.empleadoService.selected.apellido">
-    </mat-form-field>
-    
-    <mat-form-field>
-        <input matInput placeholder="celular" name="celular" [(ngModel)]="this.empleadoService.selected.celular">
-    </mat-form-field>
+   <div class="mat-elevation-z8 p-24 mat-card">
 
-    <mat-form-field>
-        <input matInput placeholder="correo" name="correo" [(ngModel)]="this.empleadoService.selected.correo">
-    </mat-form-field>
+     <div class="formulario">
+       <form [formGroup]="form">
 
-    <button mat-flat-button color="primary" (click)="guardAct()">
-        <mat-icon>save</mat-icon>Save
-    </button>
+         <div class="dos-bloque">
+           <mat-form-field appearance="outline">
+             <mat-label>Nombre</mat-label>
+             <input matInput formControlName="nombre" required>
+             <mat-icon matSuffix matTooltip="Nombre del equipo."> info</mat-icon>
+           </mat-form-field>
 
-</div>
+           <mat-form-field appearance="outline">
+             <mat-label>Estadio</mat-label>
+             <input matInput formControlName="estadio" required>
+
+             <mat-icon matSuffix matTooltip="Estadio del equipo."> info</mat-icon>
+           </mat-form-field>
+         </div>
+
+         <div class="dos-bloque">
+           <mat-form-field appearance="outline">
+             <mat-label>Sitio web</mat-label>
+             <input matInput formControlName="sitioWeb" required>
+
+             <mat-icon matSuffix matTooltip="Sitio web del equipo."> info</mat-icon>
+           </mat-form-field>
+
+           <mat-form-field appearance="outline">
+             <mat-label>Nacionalidad</mat-label>
+             <input matInput formControlName="nacionalidad" required>
+
+             <mat-icon matSuffix matTooltip="Nacionalidad del equipo."> info</mat-icon>
+           </mat-form-field>
+         </div>
+
+         <div class="dos-bloque">
+
+           <mat-form-field appearance="outline">
+             <mat-label>Año de fundación</mat-label>
+             <input matInput [matDatepicker]="picker2" formControlName="fundacion" required>
+             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+             <mat-datepicker #picker2 color="primary"></mat-datepicker>
+           </mat-form-field>
+
+           <mat-form-field appearance="outline">
+             <mat-label>Entrenador</mat-label>
+             <input matInput formControlName="entrenador" required>
+
+             <mat-icon matSuffix matTooltip="Entrenador del equipo."> info</mat-icon>
+           </mat-form-field>
+         </div>
+
+         <div class="dos-bloque">
+           <mat-form-field appearance="outline">
+             <mat-label>Capacidad</mat-label>
+             <input matInput formControlName="capacidad" required>
+
+             <mat-icon matSuffix matTooltip="Capacidad del equipo."> info</mat-icon>
+           </mat-form-field>
+
+           <mat-form-field appearance="outline">
+             <mat-label>Valor</mat-label>
+             <input matInput formControlName="valor" mask="separator.2" separatorLimit="1000000000000"
+               thousandSeparator="." required>
+
+             <mat-icon matSuffix matTooltip="Valor del equipo."> info</mat-icon>
+           </mat-form-field>
+         </div>
+
+       </form>
+
+       <div class="button">
+
+         <a routerLink="/equipos/listar" mat-raised-button class="margen">
+           <mat-icon>cancel</mat-icon>
+           <span>Cancelar</span>
+         </a>
+         <button mat-raised-button type="submit" (click)="guardarHandle($event)" class="btnGuardar">
+           <mat-icon>save</mat-icon>
+           <span>Guardar</span>
+         </button>
+       </div>
+
+     </div>
+   </div>
+ </div>

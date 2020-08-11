@@ -1,7 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { EmpleadosService } from '../../services/empleados.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { inject } from '@angular/core/testing';
+import { EditarService } from './editar.service';
+import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AppValidators } from 'src/@aplicacion/utils';
 
 
 @Component({
@@ -11,21 +13,60 @@ import { inject } from '@angular/core/testing';
 })
 export class EditarComponent implements OnInit {
 
+  form: FormGroup;
+  submit: boolean;
+  element: any;
+  id: any;
+
   constructor(
-    public empleadoService: EmpleadosService,
-    private dialogRef: MatDialogRef<EditarComponent>,
-    @Inject(MAT_DIALOG_DATA) data ) { }
+    private _formBuilder: FormBuilder,
+    private _router: Router,
+    public _service: EditarService,
+  ) {
+    this.form = this._formBuilder.group({
+      nombre: [null, [Validators.required, Validators.maxLength(60), AppValidators.alfanumerico]],
+      estadio: [null, [Validators.required, Validators.maxLength(40), AppValidators.alfanumerico]],
+      sitioWeb: [null, [Validators.required, Validators.maxLength(60), AppValidators.paginaWeb]],
+      nacionalidad: [null, [Validators.required, Validators.maxLength(40), AppValidators.alfabetico]],
+      fundacion: [null, [Validators.required]],
+      entrenador: [null, [Validators.required, Validators.maxLength(40), AppValidators.alfabetico]],
+      capacidad: [null, [Validators.required, Validators.maxLength(10), AppValidators.numerico]],
+      valor: [null, [Validators.required, Validators.maxLength(10), AppValidators.numerico]],
+    });
+    this.submit = false;
+  }
 
   ngOnInit() {
+    this._service.onItemsChanged.subscribe(data => {
+      this.form.patchValue({
+        id: data.id,
+        nombre: data.nombre,
+        estadio: data.estadio,
+        sitioWeb: data.sitioWeb,
+        nacionalidad: data.nacionalidad,
+        fundacion: data.fundacion,
+        entrenador: data.entrenador,
+        capacidad: data.capacidad,
+        valor: data.valor,
+
+      });
+
+    });
   }
 
-  guardAct() {
-    this.empleadoService.editEpleado(this.empleadoService.selected);
-    this.close();
-  }
 
-  close(): void {
-    this.dialogRef.close();
+  guardarHandle(event): void {
+    const formValue = this.form.value;
+    this.submit = true;
+    formValue.id = this._service.id;
+
+    // se inyecta en el promise editar el id y el formValue
+    this._service.editar(this._service.id, formValue)
+      .then((resp) => {
+        this.submit = false;
+        this._router.navigate([`/equipos/listar`]);
+      }
+      );
   }
 
 }
